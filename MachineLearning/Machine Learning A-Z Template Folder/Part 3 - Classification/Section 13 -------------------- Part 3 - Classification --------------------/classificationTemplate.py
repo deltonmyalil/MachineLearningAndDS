@@ -1,4 +1,4 @@
-## My Logistic Regression
+## My Classification Template
 
 # importing libraries
 import numpy as np
@@ -6,8 +6,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # importing the dataset
-dataset = pd.read_csv("Social_Network_Ads.csv")
-X = dataset.iloc[:, [2,3]].values # only considering age and estimated salary
+dataset = pd.read_csv("Filename.csv")
+X = dataset.iloc[:, [2,3]].values
 y = dataset.iloc[:,4].values
 
 # data partitioning
@@ -22,9 +22,6 @@ X_test = sc_X.fit_transform(X_test) # crap, I forgot to scale the test set
 # or could'nt I have partitioned the data after feature scaling??
 
 # fitting logistic regression to the training set
-from sklearn.linear_model import LogisticRegression
-classifier = LogisticRegression(random_state=0)
-classifier.fit(X_train, y_train)
 
 # predicting the test set results
 y_pred = classifier.predict(X_test)
