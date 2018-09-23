@@ -5,7 +5,14 @@ import matplotlib.pyplot as plt
 
 # read the data to the dataset
 dataset = pd.read_csv("SNAds.csv")
-X = dataset.iloc[:,[2,3]].values
+
+# changing the Gender feature from String to number
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+dataset.Gender = le.fit_transform(dataset.Gender)
+
+# making matrices
+X = dataset.iloc[:,[1,2,3]].values
 y = dataset.iloc[:, 4].values
 
 # data partitioning
@@ -17,6 +24,8 @@ from sklearn.preprocessing import StandardScaler
 sc = StandardScaler()
 X_train = sc.fit_transform(X_train)
 X_test = sc.fit_transform(X_test)
+
+
 
 # fitting the classifier to the training set
 from sklearn.neighbors import KNeighborsClassifier
@@ -48,3 +57,5 @@ plt.xlabel('Age')
 plt.ylabel('Estimated Salary')
 plt.legend()
 plt.show()
+
+# After including gender, the performance is worse by one misclassification
