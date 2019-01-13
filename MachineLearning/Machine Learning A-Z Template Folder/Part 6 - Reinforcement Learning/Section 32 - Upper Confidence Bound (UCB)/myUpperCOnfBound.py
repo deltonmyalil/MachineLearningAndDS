@@ -42,6 +42,13 @@ for n in range(0, N): # 10000 people (rounds)
 	sums_of_rewards[ad] = sums_of_rewards[ad] + reward
 	total_reward = total_reward + reward
 	
+# Visualizing the results
+plt.hist(ads_selected)
+plt.title("Histogram of ad selections")
+plt.xlabel("Ads")
+plt.ylabel("number of times  each ad was selected")
+plt.show()
+	
 ''''
 The ads selected vector will result in selecting each of the ads once at first
 Then it starts selecting different ones based on the density function of each
